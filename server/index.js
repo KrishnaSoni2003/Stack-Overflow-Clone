@@ -2,11 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors'
 import dotenv from 'dotenv'
+
 // import '../models/auth.js'
 
 // in react it will be okay to write users, but for node we have to write users.js
 import userRoutes from './routes/users.js'
-
+import questionRoutes from './routes/Questions.js'
+import answerRoutes from './routes/Answers.js'
 // to create express server
 const app = express();
 dotenv.config();
@@ -24,7 +26,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/user', userRoutes)
-
+app.use('/questions', questionRoutes )
+app.use('/answer', answerRoutes)
 // // for single response
 // app.post('auth/signup', ()=>{
 
@@ -34,8 +37,8 @@ app.use('/user', userRoutes)
 
 const PORT = process.env.PORT || 5000
 
-const CONNECTION_URL = process.env.REACT_APP_CONNECTION_URL
-const DATABASE_URL = process.env.CONNECTION_UR
+const DATABASE_URL = process.env.CONNECTION_URL
+
 mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => { console.log(`server running on port ${PORT}`)}))
     .catch((err) => console.log(err.message))
