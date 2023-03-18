@@ -9,6 +9,7 @@ import dotenv from 'dotenv'
 import userRoutes from './routes/users.js'
 import questionRoutes from './routes/Questions.js'
 import answerRoutes from './routes/Answers.js'
+import postRoutes from './routes/posts.js'
 // to create express server
 const app = express();
 dotenv.config();
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes)
 app.use('/questions', questionRoutes )
 app.use('/answer', answerRoutes)
+app.use('/posts', postRoutes)
 // // for single response
 // app.post('auth/signup', ()=>{
 
@@ -39,6 +41,7 @@ const PORT = process.env.PORT || 5000
 
 const DATABASE_URL = process.env.CONNECTION_URL
 
+mongoose.set("strictQuery", true)
 mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => { console.log(`server running on port ${PORT}`)}))
     .catch((err) => console.log(err.message))

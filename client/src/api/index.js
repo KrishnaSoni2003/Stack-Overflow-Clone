@@ -2,7 +2,8 @@
 
 import axios from 'axios'
 
-const API= axios.create({baseURL : 'http://localhost:5000'})
+// const API= axios.create({baseURL : 'https://krishnasoni2003web.onrender.com'})
+const API= axios.create({baseURL : 'http://localhost:5000/'})
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('Profile')){
@@ -25,3 +26,6 @@ export const voteQuestion = (id, value, userId) => API.patch(`/questions/vote/${
 
 export const fetchAllUsers = () => API.get('/user/getAllUsers');
 export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData)
+
+export const fetchPosts = () => API.get('/connect/posts');
+export const createPosts = (newPost) => API.post('/Posts', newPost)

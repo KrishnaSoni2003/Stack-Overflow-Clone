@@ -11,6 +11,8 @@ import UserProfile from './pages/UserProfile/UserProfile'
 // import QuestionDetails from './pages/Questions/QuestionDetails'
 // import {Routes,Route} from 'react-router-dom'
 import { Route, Routes } from 'react-router-dom'
+import Subscription from './Subscription/Subscription'
+import Connect from './pages/Connect/Connect'
 
 const AllRoutes = () => {
   return (
@@ -23,6 +25,9 @@ const AllRoutes = () => {
         <Route path='/Tags' element={<Tags/>}/>
         <Route path='/Users' element={<Users/>}/>
         <Route path='/Users/:id' element={<UserProfile/>}/>
+        <Route path='/Subscription' element={<Subscription/>}/>
+        <Route path='/Connect' element={<Connect/>}/>
+
     </Routes>
   )
 }
