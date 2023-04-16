@@ -78,7 +78,7 @@ const QuestionDetails = () => {
     const Navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useLocation()
-    const url= 'https://stackoverflow-clone-443256ew.netlify.app'
+    const url= process.env.REACT_APP_NETLIFY
 
     const handlePostAns = (e, answerLength) => {
         e.preventDefault()

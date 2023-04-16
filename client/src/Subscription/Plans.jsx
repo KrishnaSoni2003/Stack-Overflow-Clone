@@ -29,7 +29,7 @@ const Plans = ({ tag }) => {
       console.log("subscribe", tag.tagName);
       let config = {
         method: "post",
-        url: "http://localhost:5000/user/payment",
+        url: `${process.env.REACT_APP_BE_URL}/user/payment`,
         headers: {},
         data: {
           type: tag,
