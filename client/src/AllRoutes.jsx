@@ -13,6 +13,7 @@ import UserProfile from './pages/UserProfile/UserProfile'
 import { Route, Routes } from 'react-router-dom'
 import Subscription from './Subscription/Subscription'
 import Connect from './pages/Connect/Connect'
+import Posts from './pages/Connect/Posts'
 
 const AllRoutes = () => {
   return (
@@ -27,7 +28,7 @@ const AllRoutes = () => {
         <Route path='/Users/:id' element={<UserProfile/>}/>
         <Route path='/Subscription' element={<Subscription/>}/>
         <Route path='/Connect' element={<Connect/>}/>
-
+        {/* <Route path='/Connect/getPosts' element={<Posts/>}/> */}
     </Routes>
   )
 }

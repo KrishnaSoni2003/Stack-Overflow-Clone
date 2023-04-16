@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes)
 app.use('/questions', questionRoutes )
 app.use('/answer', answerRoutes)
-app.use('/posts', postRoutes)
+app.use('/Connect', postRoutes)
 // // for single response
 // app.post('auth/signup', ()=>{
 
