@@ -41,7 +41,7 @@ const Plans = ({ tag }) => {
       // }
       console.log("response", response);
       window.location.href = response.data.url;
-      dispatch(updateProfile(currentUser?.result?._id, {name, about, tags: currentUser?.result?.tags} ))
+      // dispatch(updateProfile(currentUser?.result?._id, {name, about, tags: currentUser?.result?.tags} ))
 
     }
   };
