@@ -60,6 +60,7 @@ export const login = async (req, res) => {
 
 export const payment = async (req, res) => {
   const body = req.body;
+  const email = body.email;
   const plans = [
     {
       id: 1,
@@ -82,28 +83,37 @@ export const payment = async (req, res) => {
   ];
   try {
     console.log("payment is being processed", body);
-    const plan = plans[body?.type?.id-1];
+    const plan = plans[body?.type?.id - 1];
     console.log("plans selected", plan);
     const session = await stripe.checkout.sessions.create({
-    //   payment_method_types: ["card"],
+      //   payment_method_types: ["card"],
       mode: "payment",
-      line_items: [{
-        price_data:{
-          currency: "inr",
-          product_data: {
-            name: plan.tagName,
+      line_items: [
+        {
+          price_data: {
+            currency: "inr",
+            product_data: {
+              name: plan.tagName,
+            },
+            unit_amount: plan.price,
           },
-          unit_amount: plan.price,
+          quantity: 1,
         },
-        quantity: 1,
-    }],
-      success_url: `${process.env.CLIENT_URL}`,
-      cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
+      ],
+      success_url: `${process.env.CLIENT_URL}/Subscription/Success`,
+      cancel_url: `${process.env.CLIENT_URL}/Subscription/Cancel`,
     });
-    // });
+    // console.log("user email", email);
+    // const existinguser = await users.findOne({ email });
+    // console.log("exisiting user", existinguser);
+    // const updateQuery = { email: email };
+    // const updateParameter = { $set:{plan: plan.tagName, }};
+    // const updateUserPlan = await users.updateOne(updateQuery, updateParameter);
+    // console.log("update", updateUserPlan);
     res.status(200).json({ url: session.url });
     // res.json({ url: session.url });
   } catch (e) {
+    // res.status(200).json({ message: "success" });
     res.status(500).json({ error: e.message });
   }
 };

@@ -29,3 +29,5 @@ export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`,
 
 export const fetchPosts = () => API.get('/connect/posts');
 export const createPosts = (newPost) => API.post('/Posts', newPost)
+
+export const subscribe = (plan) => API.post('/user/payment')
